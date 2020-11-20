@@ -16,6 +16,7 @@ const Sub = styled.h2`
   font-weight: 700;
   font-size: 1.2rem;
   color: #fefefe;
+  max-width: 60%;
 `;
 const Code = styled.span`
   font-family: 'Cousine', monospace;

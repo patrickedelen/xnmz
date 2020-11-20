@@ -47,7 +47,7 @@ export default async (req, res) => {
     console.log('sending cat to browser');
     const cat = ansi_up.ansi_to_html(pic.catAscii + '\n')
 
-    res.status(200).send(`<body style="font-family: monospace; background-color: #222222;">${cat}</body>`);
+    res.status(200).send(`<body style="font-family: monospace; background-color: #222222; width: 100%">${cat}</body>`);
   } else {
     console.log('sending cat to terminal');
 

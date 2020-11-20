@@ -113,7 +113,6 @@ export default function Dark() {
         </ProjectContainer>
       </Container>
     </div>
-  )
-
+  );
 }
 
