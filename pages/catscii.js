@@ -52,8 +52,21 @@ const Underline = styled.a`
   }
 `;
 
+const CatPic = styled.div`
+  height: 200px;
+  width: 200px;
+  margin: 5px;
+`;
+
 const CatContainer = styled.div`
   margin: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-center;
+`;
+
+const RoundedImage = styled(Image)`
+  border-radius: 4px;
 `;
 
 function Catscii(props) {
@@ -65,25 +78,29 @@ function Catscii(props) {
       </Head>
 
       <Container>
-        <Title>xnmz.co/catscii</Title>
+        <Title><Underline href="/">xnmz.co</Underline>/catscii</Title>
         <Sub>
         it gets lonely staring at a screen all day. thankfully i made this program that turns my cat pictures into ascii art that i can curl whenever the mood strikes.
         </Sub>
         <Sub>want to try it?</Sub>
         <Code>curl https://xnmz.co/api/cat/random</Code>
+        <Sub>or click any of the pics to see the ascii version</Sub>
 
       <CatContainer>
         {
           props.pics.map((pic) => {
             return (
-              <>
-                <Image
-                  src={pic.url}
-                  alt="A picture of a cat"
-                  width={200}
-                  height={200}
-                />
-              </>
+              <CatPic key={pic._id}>
+                <a href={`/api/cat/${pic._id}`} >
+                  <RoundedImage
+                    src={pic.url}
+                    alt="A picture of a cat"
+                    width={200}
+                    height={200}
+                    layout="fixed"
+                  />
+                </a>
+              </CatPic>
               
             )
           })

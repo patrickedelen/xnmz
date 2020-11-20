@@ -35,11 +35,12 @@ export default async (req, res) => {
       pid
     }
   } = req;
+  console.log(pid);
 
-  const pic = await Pic.findOne({id: pid });
+  const pic = await Pic.findById(pid);
   
   if (!pic) {
-    res.status(404).send('cat pic not found');
+    return res.status(404).send('cat pic not found');
   }
 
   if (agent.browser && agent.browser !== undefined) {
