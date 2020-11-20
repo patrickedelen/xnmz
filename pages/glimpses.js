@@ -19,7 +19,6 @@ const YoutubePlayer = (props) => {
     )}
     <h4>loading {props.curVideoId}</h4>
     </>
-    
     )
 }
 

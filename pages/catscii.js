@@ -44,12 +44,12 @@ const Underline = styled.a`
   background-image: linear-gradient(90deg, rgba(255,191,113,1), rgba(255,145,153,1));
   background-position: 0 1.3em;
   background-repeat: repeat-x;
-  background-size: 100% 4px;
+  background-size: 500% 4px;
   padding: 5px 0;
-  transition: all 0.5s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
   &:hover {
-    background-size: 500% 4px;
+    background-size: 100% 4px;
   }
 `;
 
