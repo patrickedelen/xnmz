@@ -1,49 +1,57 @@
 import React from 'react';
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import Image from 'next/image'
-
 import styled from '@emotion/styled';
 
 import {
   ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip
 } from 'recharts';
 
-const Container = styled.div`
-  witdth: 90%;
-  margin-top: 100px;
-  padding: 30px;
-  border-radius: 5px;
-  max-width: 800px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #fefefe;
-
-`;
-
 const Title = styled.h1`
-color: #222222;
-font-weight: 400;
-font-size: 1.5rem;
-margin-bottom: 20px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fefefe;
 `;
-
-const Text = styled.p`
-  color: #222222;
-  font-weight: 400;
+const Sub = styled.h2`
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
   font-size: 1.2rem;
+  color: #fefefe;
+  max-width: 60%;
+`;
+const Code = styled.span`
+  font-family: 'Cousine', monospace;
+  color: #fefefe;
+  background-color: rgba(121, 117, 134, 0.2);
+  padding: 5px;
+  font-size: 0.9em;
 `;
 
-const Code = styled.p`
-background: #fafafa;
-border-radius: 5px;
-padding: 0.2rem;
-font-size: 1rem;
-font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-  Bitstream Vera Sans Mono, Courier New, monospace;
+const ProjectContainer = styled.div`
+  margin: 20px 0;
+`;
+
+
+const Container = styled.div`
+@media (min-width: 768px) {
+  margin: 15vh 15vw;
+}
+@media (max-width: 767px) {
+  margin: 8vh 8vw;
+}
+`;
+
+const Underline = styled.a`
+  background-image: linear-gradient(90deg, rgba(255,191,113,1), rgba(255,145,153,1));
+  background-position: 0 1.3em;
+  background-repeat: repeat-x;
+  background-size: 100% 4px;
+  padding: 5px 0;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background-size: 500% 4px;
+  }
 `;
 
 function HomeTeam(props) {
@@ -63,17 +71,17 @@ function HomeTeam(props) {
   });
   
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>xnmz.co/hometeam</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Container>
-        <Title>xnmz.co/hometeam</Title>
-        <Text>
-        the pandemic has provided some interesting changes to study. one of those i was most interested in was seeing if the bubble removed a presume home court advantage in basketball games. here's the data...
-        </Text>
+        <Title><Underline href="/">xnmz.co</Underline>/hometeam</Title>
+        <Sub>
+          the pandemic has provided some interesting changes to study. one of those i was most interested in was seeing if the bubble removed a presume home court advantage in basketball games. here's the data...
+        </Sub>
 
         <ScatterChart
           width={600}
@@ -89,10 +97,10 @@ function HomeTeam(props) {
           <Scatter name="Home Game Free Throw Perf" data={home} fill="blue" />
           <Scatter name="Away Game Free Throw Perf" data={away} fill="red" />
         </ScatterChart>
-        <Text>Looks pretty even huh? There are some players with better home (blue) than away (red) free throw performance but it's not clear cut. When we run the data through a python script we get some interesting results!</Text>
-        <Text>For the top 10% of players by total play time, players score ~.9 free throws per 36 minutes on the court for home games and ~.88 for away games, showing a slight advantage to being home.</Text>
-        <Text>After the bubble, players scored ~.89 free throws per 36 minutes at home and ~.91 while away. So there was a change!</Text>
-        <Text>Play around with individual players below:</Text>
+        <Sub>Looks pretty even huh? There are some players with better home (blue) than away (red) free throw performance but it's not clear cut. When we run the data through a python script we get some interesting results!</Sub>
+        <Sub>For the top 10% of players by total play time, players score ~.9 free throws per 36 minutes on the court for home games and ~.88 for away games, showing a slight advantage to being home.</Sub>
+        <Sub>After the bubble, players scored ~.89 free throws per 36 minutes at home and ~.91 while away. So there was a change!</Sub>
+        <Sub>Play around with individual players below:</Sub>
       </Container>
     </div>
   )
@@ -101,7 +109,7 @@ function HomeTeam(props) {
 HomeTeam.getInitialProps = async (ctx) => {
   const res = await fetch('http://localhost:3000/api/bb/all');
   const json = await res.json();
-  // console.log(json[0].url);
+  console.log(json[0].url);
   return { data: json };
 }
 
