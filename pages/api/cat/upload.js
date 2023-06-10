@@ -6,7 +6,7 @@ import fs from 'fs';
 
 const asciify = require('asciify-image');
 
-mongoose.connect('mongodb+srv://root:NXYzvb6f1Px4ME0s@cluster0.3gdd7.mongodb.net/cat?retryWrites=true&w=majority',
+mongoose.connect('<db string>',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
