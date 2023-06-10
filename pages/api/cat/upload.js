@@ -47,8 +47,8 @@ export default (req, res) => {
   });
 
   aws.config.update({
-    accessKeyId: 'AKIA3KDYAGJFIDJENN53',
-    secretAccessKey: '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',
+    accessKeyId: '',
+    secretAccessKey: '',
     region: 'us-west-1',
     signatureVersion: 'v4',
   });
