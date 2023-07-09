@@ -5,14 +5,16 @@ const AU = require('ansi_up');
 const ansi_up = new AU.default;
 
 
-mongoose.connect('mongodb+srv://root:NXYzvb6f1Px4ME0s@cluster0.3gdd7.mongodb.net/cat?retryWrites=true&w=majority',
+const mongo_uri = process.env.MONGODB_URI;
+
+mongoose.connect(mongo_uri,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
+    dbName: 'cat'
   }
 );
-
 const catPicSchema = {
   url: String,
   catAscii: String,
@@ -45,4 +47,5 @@ export default async (req, res) => {
     res.status(200).send(pic.catAscii + '\n');
   }
 
+  mongoose.connection.close();
 }

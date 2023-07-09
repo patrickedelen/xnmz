@@ -107,9 +107,11 @@ function HomeTeam(props) {
 }
 
 HomeTeam.getInitialProps = async (ctx) => {
-  const res = await fetch('http://localhost:3000/api/bb/all');
+  const url = process.env.NEXT_PUBLIC_SITE_URL;
+
+
+  const res = await fetch(`${url}/api/bb/all`);
   const json = await res.json();
-  console.log(json[0].url);
   return { data: json };
 }
 

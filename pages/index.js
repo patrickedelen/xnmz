@@ -6,9 +6,32 @@ import { PageColumn } from '../components/PageColumn';
 const Title = styled.h1`
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #fefefe;
 `;
+
+const Quote = styled.h2`
+  font-family: 'Cousine', monospace;
+  color: #fefefe;
+  background-color: rgba(121, 117, 134, 0.2);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #fefefe;
+  margin: 40px 0;
+  padding: 10px;
+  text-align: center;
+`
+
+const Objective = styled.h3`
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #fefefe;
+  margin: 20px 0;
+  width: 80%;
+  max-width: 800px;
+`
+
 const Sub = styled.h2`
   font-family: 'Lato', sans-serif;
   font-weight: 700;
@@ -63,14 +86,69 @@ export default function Dark() {
           </svg>
         </>
         <Title>
-          patrick edelen's portfolio site
+          pat edelen's portfolio site
         </Title>
         <Sub>
           patrickedelen (at) gmail.com | <Underline href="https://github.com/patrickedelen">github.com/patrickedelen</Underline>
         </Sub>
+
         <Sub>
           ...
         </Sub>
+
+
+        <Objective>
+          welcome visitor!
+        </Objective>
+        <Objective>
+          so why make personal projects anyways? when i started coding at 14 i loved messing around with html and wordpress just to see what was possible.
+          now that i have a real job and life i've realized personal projects keep me loving this profession when work is boring / frustrating / repetitive.
+        </Objective>
+        <Objective>  
+          not 100% sure what's next for me but likely it will involve computers and working with them to solve problems. click any of the links below for a lil writeup on why i worked on the project
+          and more details on how to check them out.
+        </Objective>
+
+        <Sub>
+          ...
+        </Sub>
+
+        <ProjectContainer>
+          <Sub>
+            <Underline href="/wywt">what are you wearing today?</Underline> - manage your wardrobe
+          </Sub>
+          <Code>
+            nextjs//figma//framer-motion
+          </Code>
+        </ProjectContainer>
+
+        <ProjectContainer>
+          <Sub>
+            <Underline href="/freebg">freebg</Underline> - lambda docker container to remove image backgrounds
+          </Sub>
+          <Code>
+            python//aws
+          </Code>
+        </ProjectContainer>
+
+        <ProjectContainer>
+          <Sub>
+            <Underline href="/picshare">picshare</Underline> - web demo on how to actually handle form photo uploads
+          </Sub>
+          <Code>
+            nextjs//express//aws
+          </Code>
+        </ProjectContainer>
+
+        <ProjectContainer>
+          <Sub>
+            <Underline href="/pycussion">pycussion</Underline> - make visuals for my live music performances
+          </Sub>
+          <Code>
+            python//python//python
+          </Code>
+        </ProjectContainer>
+
         <ProjectContainer>
           <Sub>
             <Underline href="/catscii">catscii</Underline> - curling ascii art of my cat to make programming fun again
@@ -79,6 +157,7 @@ export default function Dark() {
             node//s3//react-native
           </Code>
         </ProjectContainer>
+
         <ProjectContainer>
           <Sub>
             <Underline href="/hometeam">home court advantage</Underline> - my brother asked me a basketball question so I scraped all the stats
@@ -87,14 +166,7 @@ export default function Dark() {
             node//react//python
           </Code>
         </ProjectContainer>
-        <ProjectContainer>
-          <Sub>
-            <Underline href="/wuht">where'd you hear that</Underline> - running with music but with more data
-          </Sub>
-          <Code>
-            node//express//react-native
-          </Code>
-        </ProjectContainer>
+
         <ProjectContainer>
           <Sub>
             <Underline href="/glimpses">glimpses</Underline> - random youtube videos are actually kind of profound?
@@ -103,6 +175,19 @@ export default function Dark() {
             node//mongodb//react
           </Code>
         </ProjectContainer>
+
+        <Sub>
+          ...
+        </Sub>
+
+        <Quote>
+          i don't perfect my personal projects. most of the code i write actually makes money.
+        </Quote>
+
+        <Sub>
+          as a treat for scrolling down this far you can download my resume <Underline href="/resume.pdf" target="_blank">here</Underline>.
+        </Sub>
+
       </PageColumn>
     </div>
   );

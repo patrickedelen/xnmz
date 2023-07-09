@@ -86,6 +86,8 @@ function Catscii(props) {
           it gets lonely staring at a screen all day. thankfully i made this program that turns my cat pictures into
           ascii art that i can curl whenever the mood strikes.
         </Sub>
+        
+
         <Sub>want to try it?</Sub>
         <Code>curl https://xnmz.co/api/cat/random</Code>
         <Sub>or click any of the pics to see the ascii version</Sub>
@@ -107,7 +109,9 @@ function Catscii(props) {
 }
 
 Catscii.getInitialProps = async (ctx) => {
-  const res = await fetch('https://xnmz.co/api/cat/all');
+  const url = process.env.NEXT_PUBLIC_SITE_URL;
+
+  const res = await fetch(`${url}/api/cat/all`);
   const json = await res.json();
   // console.log(json[0].url);
   return { pics: json };

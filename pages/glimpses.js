@@ -3,6 +3,54 @@ import { useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
 
 
+import styled from '@emotion/styled';
+import { PageColumn } from '../components/PageColumn';
+
+const Title = styled.h1`
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #fefefe;
+`;
+const Sub = styled.h2`
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fefefe;
+  max-width: 60%;
+`;
+const Code = styled.span`
+  font-family: 'Cousine', monospace;
+  color: #fefefe;
+  background-color: rgba(121, 117, 134, 0.2);
+  padding: 5px;
+  font-size: 0.9em;
+`;
+
+const ProjectContainer = styled.div`
+  margin: 20px 0;
+`;
+
+const ImageContainer = styled.div`
+    margin-top: 30px;
+
+    img {
+      margin: 10px;
+    }
+`
+const Underline = styled.a`
+  background-image: linear-gradient(90deg, rgba(255, 191, 113, 1), rgba(255, 145, 153, 1));
+  background-position: 0 1.3em;
+  background-repeat: repeat-x;
+  background-size: 500% 4px;
+  padding: 5px 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    background-size: 100% 4px;
+  }
+`;
+
 
 const YoutubePlayer = (props) => {
   const opts = {
@@ -23,12 +71,14 @@ const YoutubePlayer = (props) => {
 }
 
 const getVideo = async () => {
-  const res = await fetch('http://localhost:3000/api/g/random');
+  const url = process.env.NEXT_PUBLIC_SITE_URL;
+
+  const res = await fetch(`${url}/api/g/random`);
   const json = await res.json();
   return json.url;
 }
 
-const Home = () => {
+const Glimpses = () => {
   // const [curVideos, setCurVideos] = useState(['']);
   // const [curVideoIndex, setCurVideoIndex] = useState(0);
 
@@ -56,19 +106,32 @@ const Home = () => {
 
   console.log('rendering', vidId)
 
+  
 
   return (
-    <div className="container">
-      <Head>
-        <title>Glimpses</title>
-      </Head>
+    <div>
+        <Head>
+          <title>xnmz.co/pycussion</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+  
+        <PageColumn>
+          <Title>
+            <Underline href="/">xnmz.co</Underline>/glimpses
+          </Title>
 
-      <main>
-        <YoutubePlayer curVideoId={vidId} />
-      </main>
+          <Sub>
+            there was a website i used to go on in high school that just played random youtube videos with default file names on loop. the moments you catch from around the world are pretty neat.
+          </Sub>
+          <Sub>
+            i built this replica app a while ago to scrape videos and play them here, maybe stay for a minute?
+          </Sub>
 
-    </div>
+          <YoutubePlayer curVideoId={vidId} />
+        
+        </PageColumn>
+      </div>
   )
 }
 
-export default Home;
+export default Glimpses;

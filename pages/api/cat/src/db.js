@@ -1,7 +1,16 @@
 const url = require('url')
 const MongoClient = require('mongodb').MongoClient
 
-const mongoUrl = 'mongodb+srv://root:NXYzvb6f1Px4ME0s@cluster0.3gdd7.mongodb.net/catpics?retryWrites=true&w=majority';
+const mongo_uri = process.env.MONGODB_URI;
+
+mongoose.connect(mongo_uri,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    dbName: 'cat'
+  }
+);
 
 let cachedDb = null;
 

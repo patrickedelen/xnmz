@@ -4,12 +4,14 @@ const AU = require('ansi_up');
 
 const ansi_up = new AU.default;
 
+const mongo_uri = process.env.MONGODB_URI;
 
-mongoose.connect('mongodb+srv://root:NXYzvb6f1Px4ME0s@cluster0.3gdd7.mongodb.net/ver1?retryWrites=true&w=majority',
+mongoose.connect(mongo_uri,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
+    dbName: 'ver1'
   }
 );
 

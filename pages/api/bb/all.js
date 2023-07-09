@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 
+const mongo_uri = process.env.MONGODB_URI;
 
-mongoose.connect('mongodb+srv://root:NXYzvb6f1Px4ME0s@cluster0.3gdd7.mongodb.net/bbdatav1?retryWrites=true&w=majority',
+mongoose.connect(mongo_uri,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
+    dbName: 'bbdatav1'
   }
 );
 
@@ -31,5 +33,6 @@ try {
 
 export default async (req, res) => {
   const pd = await PlayerData.find({}).sort({ totalTime: -1 }).limit(50);
+  mongoose.connection.close();
   res.status(200).json(pd);
 }

@@ -6,11 +6,14 @@ import fs from 'fs';
 
 const asciify = require('asciify-image');
 
-mongoose.connect('<db string>',
+const mongo_uri = process.env.MONGODB_URI;
+
+mongoose.connect(mongo_uri,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
+    dbName: 'cat'
   }
 );
 
@@ -79,9 +82,13 @@ export default (req, res) => {
               console.log(a);
               p.catAscii = a;
               await p.save();
+              mongoose.connection.close();
               resolve(res.status(200).json({ msg: 'ok' }));
             })
-          .catch((e) => console.log(e)); 
+          .catch((e) => {
+            mongoose.connection.close();
+            console.log(e)
+          }); 
         }
       })
 

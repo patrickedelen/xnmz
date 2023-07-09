@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 
+const mongo_uri = process.env.MONGODB_URI;
 
-mongoose.connect('mongodb+srv://root:NXYzvb6f1Px4ME0s@cluster0.3gdd7.mongodb.net/cat?retryWrites=true&w=majority',
+mongoose.connect(mongo_uri,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
+    dbName: 'cat'
   }
 );
-
 const catPicSchema = {
   url: String,
   catAscii: String,
@@ -24,6 +25,7 @@ try {
 }
 
 export default async (req, res) => {
-  const pics = await Pic.find({});
+  const pics = await Pic.find({}).select('url uploadedAt _id');
+  mongoose.connection.close();
   res.status(200).json(pics);
 }
